@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Espace professionnel CBK : consulter et demander les catalogues." />
+  <title>Espace Pro | La Sélection CBK</title>
+  <style>
+    :root{--blue:#173d75;--ink:#171717;--muted:#6b6862;--paper:#f6f3ed;--line:#ded8d0;--white:#fff;--shadow:0 18px 60px rgba(20,20,20,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font:15px/1.55 Arial,Helvetica,sans-serif;background:#fff}
+    a{color:inherit}main{max-width:1380px;margin:0 auto;padding:0 28px 80px}
+    .intro{position:relative;isolation:isolate;margin:0 -28px 38px;padding:54px 28px 40px;background:var(--paper);border-bottom:1px solid var(--line)}.intro:before{content:"";position:absolute;z-index:-1;inset:0 calc((1380px - 100vw)/2)}.intro-inner{max-width:1380px;margin:auto}
+    .crumb{font-size:11px;color:var(--muted);margin-bottom:26px}.kicker{font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:700;color:var(--blue)}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.025em}h1{font-size:clamp(48px,6vw,64px);line-height:.96;margin:13px 0 18px}.intro p{max-width:740px;color:var(--muted);line-height:1.7;margin:0}
+    .panel{max-width:1000px;margin:0 auto;background:#fff;border:1px solid var(--line);padding:32px;box-shadow:var(--shadow)}
+    .forms{display:grid;grid-template-columns:1fr .8fr;gap:42px;align-items:start}.form-card h2,.account h2{font-size:30px;margin:0 0 7px}.form-card>p,.account>p,.pro-info p{margin:0 0 20px;color:var(--muted);font-size:13px;line-height:1.7}
+    label{display:block;font-size:11px;font-weight:700;margin:14px 0 6px}.form-card input:not([type=checkbox]),.form-card select,.form-card textarea{width:100%;padding:12px 13px;border:1px solid var(--line);font:14px Arial,sans-serif;background:white;color:var(--ink)}.form-card textarea{min-height:100px;resize:vertical}
+    input:focus,select:focus,textarea:focus{outline:2px solid rgba(23,61,117,.2);border-color:var(--blue)}
+    button,.button{border:0;background:var(--blue);color:#fff;padding:12px 18px;font:700 11px Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;margin-top:18px}button:hover,.button:hover{background:#0e2f61}button:disabled{opacity:.6;cursor:wait}
+    .pro-info{border-left:2px solid var(--blue);padding:3px 0 3px 22px}.pro-info h2{font-size:28px;margin:0 0 10px}.pro-info a{color:var(--blue)}
+    .account{display:none}.account.visible{display:block}.documents,.request-list{padding:0;list-style:none;margin:18px 0 32px}.documents li,.request-list li{border-top:1px solid var(--line);padding:13px 0}.documents a{color:var(--blue);font-weight:700}.account h3{font-size:25px;margin:30px 0 5px}.account-section{padding-top:18px;border-top:1px solid var(--line)}
+    .pro-catalogue-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.pro-catalogue-links a{display:grid;gap:7px;padding:18px;border:1px solid var(--line);background:var(--paper);text-decoration:none}.pro-catalogue-links strong{font:22px Georgia,serif}.pro-catalogue-links span{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--blue)}.pro-catalogue-links a:hover{border-color:var(--blue)}
+    .request-form{max-width:650px}.request-form select,.request-form textarea{width:100%;border:1px solid var(--line);padding:12px 13px;font:14px Arial,sans-serif}.request-form textarea{min-height:90px;resize:vertical}.logout{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+    .status{min-height:24px;margin:20px 0 0;color:var(--blue);font-weight:700;font-size:13px}.status.error{color:#a32c36}.foot{max-width:1000px;margin:22px auto 0;text-align:center;color:var(--muted);font-size:12px}.foot a{color:var(--blue)}
+    @media(max-width:760px){main{padding:0 18px 60px}.intro{margin:0 -18px 28px;padding:40px 18px 32px}.panel{padding:22px}.forms{grid-template-columns:1fr;gap:30px}.pro-info{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}.pro-catalogue-links{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header></header>
+  <main>
+    <section class="intro"><div class="intro-inner">
+      <div class="crumb"><a href="/index.html">Accueil</a> / Espace Pro</div>
+      <div class="kicker">La Sélection CBK</div><h1>Espace Pro</h1>
+      <p>Un accès réservé aux professionnels. Connectez-vous pour consulter les catalogues disponibles ou adresser une demande à votre équipe CBK.</p>
+    </div></section>
+    <section class="panel" aria-label="Espace professionnel">
+      <div class="forms" id="proForms">
+        <form class="form-card" id="loginForm">
+          <h2>Connexion professionnelle</h2><p>Les comptes sont créés et remis directement par l’administration CBK.</p>
+          <label for="loginEmail">Adresse e-mail professionnelle</label><input id="loginEmail" name="email" type="email" autocomplete="username" required maxlength="190">
+          <label for="loginPassword">Mot de passe</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required maxlength="200">
+          <button type="submit">Se connecter</button>
+        </form>
+        <aside class="pro-info"><h2>Un compte professionnel ?</h2><p>Contactez votre conseiller CBK pour obtenir un identifiant. L’accès donne droit aux catalogues et aux documents mis à disposition des professionnels.</p><a href="/contact.html">Contacter CBK</a></aside>
+      </div>
+      <div class="account" id="accountPanel" aria-live="polite">
+        <h2>Votre espace professionnel</h2><p id="accountWelcome"></p>
+        <section class="account-section"><h3 id="downloads">Catalogues et fiches techniques</h3><p>Consultez et téléchargez les documents disponibles pour votre compte.</p>
+          <div class="pro-catalogue-links"><a href="/catalogue-carrelage.html"><strong>Carrelage</strong><span>Parcourir le catalogue</span></a><a href="/catalogue-sanitaire.html"><strong>Sanitaire</strong><span>Parcourir le catalogue</span></a><a href="/catalogue-robinetterie.html"><strong>Robinetterie</strong><span>Parcourir le catalogue</span></a></div>
+          <ul class="documents" id="documentsList"></ul><p id="noDocuments" hidden>Aucune fiche technique PDF n’est disponible pour le moment.</p>
+        </section>
+        <section class="account-section"><h3>Demander un catalogue</h3><p>Choisissez le catalogue souhaité. Votre demande sera transmise à l’équipe CBK.</p>
+          <form class="request-form" id="catalogueRequestForm"><label for="catalogueChoice">Catalogue souhaité</label><select id="catalogueChoice" name="catalogue" required><option value="">Sélectionner un catalogue</option><option>Catalogue général</option><option>Carrelage</option><option>Sanitaire</option><option>Robinetterie</option></select>
+            <label for="catalogueNote">Précision (facultatif)</label><textarea id="catalogueNote" name="note" maxlength="1000" placeholder="Format papier ou numérique, référence recherchée…"></textarea><button type="submit">Envoyer ma demande</button></form>
+          <ul class="request-list" id="catalogueRequests"></ul>
+        </section>
+        <button class="logout" id="logoutButton" type="button">Se déconnecter</button>
+      </div>
+      <p class="status" id="proStatus" role="status" aria-live="polite"></p>
+    </section>
+
+    <p class="foot">Besoin d’aide ? <a href="/contact.html">Contactez CBK</a>.</p>
+  </main>
+  <script src="/pro.js" defer></script>
+</body>
+</html>

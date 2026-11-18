@@ -1,0 +1,52 @@
+/* Shared homepage header. These values match the homepage header rules. */
+.cbk-shared-header{height:82px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.07);color:#171717}
+.cbk-header-container{max-width:1320px;height:100%;margin:auto;padding:0 30px;display:grid;grid-template-columns:180px 1fr 260px;align-items:center;gap:24px;box-sizing:border-box;position:relative}
+.cbk-logo{font-size:26px;letter-spacing:.18em;font-weight:800;color:#173d75;text-decoration:none;display:block}
+.cbk-logo img{height:48px;width:auto;display:block}
+.cbk-shared-header .mainnav{display:flex;justify-content:center;gap:28px;font:13px Arial,Helvetica,sans-serif}
+.cbk-shared-header .mainnav a{position:relative;padding:30px 0;color:inherit;text-decoration:none;white-space:nowrap}
+.cbk-shared-header .mainnav a:after{content:"";position:absolute;bottom:22px;left:0;width:0;height:1px;background:currentColor;transition:width .25s}
+.cbk-shared-header .mainnav a:hover:after{width:100%}
+.cbk-header-actions{display:flex;justify-content:flex-end;align-items:center;gap:14px;font-size:12px}
+.cbk-pro-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 12px;border:1px solid #ded8cf;border-radius:999px;color:#173d75;text-decoration:none;font:700 11px Arial,Helvetica,sans-serif;white-space:nowrap}
+.cbk-pro-btn:hover{border-color:#173d75;background:#f6f3ed}
+.cbk-header-actions .iconbtn{width:38px;height:38px;border:1px solid #e7e3dc;background:#fff;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#171717;font-size:16px}
+.cbk-header-actions .cbk-header-cart{position:relative;padding:0}
+.cbk-header-cart svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cbk-cart-badge{position:absolute;right:-4px;top:-4px;min-width:16px;height:16px;padding:0 4px;border-radius:99px;background:#173d75;color:#fff;font:700 9px/16px Arial,sans-serif;text-align:center}
+.cbk-header-favorites{position:relative;padding:0}
+.cbk-favorite-badge{position:absolute;right:-4px;top:-4px;min-width:16px;height:16px;padding:0 4px;border-radius:99px;background:#173d75;color:#fff;font:700 9px/16px Arial,sans-serif;text-align:center}
+.cbk-header-actions .wa-btn{padding:11px 15px;border:0;border-radius:999px;background:#173d75;color:white;font:700 12px Arial,Helvetica,sans-serif;white-space:nowrap;text-decoration:none}
+.cbk-header-actions .menu-btn{display:none}
+@media(max-width:1050px){
+  .cbk-header-container{grid-template-columns:1fr auto}
+  .cbk-shared-header .mainnav{display:none}
+  .cbk-header-actions .hide-md{display:none}
+  .cbk-header-actions .menu-btn{display:grid}
+}
+@media(max-width:640px){
+  .cbk-shared-header{height:70px}
+  .cbk-header-container{padding:0 18px}
+  .cbk-logo img{height:40px}
+  .cbk-header-actions{gap:5px}
+  .cbk-header-actions .iconbtn{width:34px;height:34px}
+  .cbk-pro-btn{min-height:34px;padding:0 8px;font-size:10px}
+}
+@media(max-width:380px){.cbk-pro-btn{width:40px;padding:0;font-size:0}.cbk-pro-btn:after{content:"Pro";font:700 10px Arial,Helvetica,sans-serif}}
+
+.cbk-site-footer{background:#121212;color:#fff;padding:65px 0 30px}
+.cbk-footer-wrap{max-width:1380px;margin:0 auto;padding:0 30px}
+.cbk-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px}
+.cbk-site-footer h4{font:700 10px Arial,Helvetica,sans-serif;letter-spacing:.17em;text-transform:uppercase;margin:0 0 15px}
+.cbk-site-footer p,.cbk-site-footer a{color:#aaa;font:12px/2 Arial,Helvetica,sans-serif;text-decoration:none}
+.cbk-site-footer a:hover{color:#fff}
+.cbk-footer-logo{display:inline-block;margin-bottom:10px}
+.cbk-footer-logo img{height:72px;width:auto;max-width:none;filter:none}
+.cbk-footer-socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cbk-footer-socials span{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 14px;border:1px solid rgba(255,255,255,.18);color:#fff;font:11px Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.cbk-footer-contact{display:grid;align-content:start;gap:10px}
+.cbk-footer-contact div{font:12px/1.7 Arial,Helvetica,sans-serif;color:#aaa}
+.cbk-footer-contact strong{display:block;color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:3px}
+.cbk-footer-bottom{border-top:1px solid #2f2f2f;margin-top:42px;padding-top:22px;font:11px Arial,Helvetica,sans-serif;color:#777;display:flex;justify-content:space-between;gap:20px}
+@media(max-width:900px){.cbk-footer-grid{grid-template-columns:1fr 1fr}.cbk-footer-about{grid-column:1/-1}}
+@media(max-width:640px){.cbk-footer-wrap{padding:0 18px}.cbk-site-footer{padding:48px 0 26px}.cbk-footer-grid{grid-template-columns:1fr;gap:26px}.cbk-footer-about{grid-column:auto}.cbk-footer-bottom{display:grid;line-height:1.8;margin-top:32px}.cbk-footer-logo img{height:60px}}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robinetterie | La Sélection CBK</title>
+  <style>
+    :root{--ink:#171717;--muted:#6b6862;--line:#ded8d0;--paper:#f6f3ed;--blue:#173d75;--white:#fff;--shadow:0 18px 60px rgba(20,20,20,.10)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:15px/1.55 Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}
+    a{color:inherit}main{max-width:1380px;margin:0 auto;padding:0 28px 80px}
+    .intro{position:relative;isolation:isolate;margin:0 -28px 32px;padding:58px 28px 44px;background:var(--paper);border-bottom:1px solid var(--line)}
+    .intro:before{content:"";position:absolute;z-index:-1;inset:0 calc((1380px - 100vw)/2)}
+    .intro>*{max-width:1380px;margin-left:auto;margin-right:auto}
+    .eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--blue)}
+    h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.025em}
+    h1{font-size:clamp(48px,6vw,64px);line-height:.96;margin:13px auto 18px!important}
+    p{color:var(--muted);line-height:1.7}.intro p{margin-bottom:0;max-width:760px}
+    .notice{border:1px solid var(--line);border-left:3px solid var(--blue);background:#fff;padding:16px 18px;margin:0 0 24px;color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .card{background:#fff;border:1px solid var(--line);padding:24px;transition:.25s}.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .brand{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+    .card h2{font-size:27px;margin:8px 0 5px}.card p{margin:0 0 13px;font-size:13px}
+    .tag{display:inline-block;padding:6px 9px;background:var(--paper);font-size:10px;color:var(--muted)}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:43px;margin-top:17px;padding:0 16px;background:var(--ink);color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+    .button:hover{background:var(--blue)}
+    .contact{margin-top:55px;padding:36px 40px;background:var(--blue);color:#fff;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+    .contact h2{margin:0;font-size:34px}.contact p{margin:8px 0 0;color:#dce5f1}.contact a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:#fff;color:var(--blue);font-size:10px;font-weight:700;letter-spacing:.07em;text-decoration:none;text-transform:uppercase;white-space:nowrap}
+    @media(max-width:780px){main{padding:0 18px 60px}.intro{margin:0 -18px 26px;padding:42px 18px 34px}.grid{grid-template-columns:1fr}.contact{grid-template-columns:1fr;padding:28px 24px}.contact h2{font-size:29px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="/index.html" aria-label="Accueil CBK">CBK</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="/catalogue-carrelage.html">Carrelage</a><a href="/catalogue-sanitaire.html">Sanitaire</a><a href="/catalogue-robinetterie.html">Robinetterie</a><a href="/marques.html">Marques</a><a href="/bonnes-affaires.html">Bonnes affaires</a><a href="/espace-pro.html">Espace Pro</a><a href="/index.html#showrooms">Showrooms</a>
+    </nav>
+  </header>
+  <main>
+    <div class="intro"><div class="eyebrow">La Sélection CBK</div><h1>Robinetterie</h1><p>Découvrez les références de douche actuellement présentées dans le catalogue sanitaire et contactez CBK pour obtenir la gamme complète de robinetterie.</p></div>
+    <div class="notice">La liste détaillée des robinets, finitions, prix et disponibilités n’était pas incluse dans les fichiers transmis. Les références ci-dessous reprennent uniquement les produits de douche déjà présents dans le catalogue.</div>
+    <section class="grid" aria-label="Produits de douche disponibles dans le catalogue actuel">
+      <article class="card" data-category="Douche"><div class="brand">Jaquar</div><h2>Shower Panels</h2><p>Panneaux de douche</p><span class="tag">Inox / Black</span><br><a class="button" href="/catalogue-sanitaire.html?brand=Jaquar&amp;category=Douche">Voir les produits de douche</a></article>
+      <article class="card" data-category="Douche"><div class="brand">Jaquar</div><h2>Douches de tête</h2><p>Équipements de douche</p><span class="tag">Chrome / Black / Gold</span><br><a class="button" href="/catalogue-sanitaire.html?brand=Jaquar&amp;category=Douche">Voir les produits de douche</a></article>
+    </section>
+    <section class="contact"><h2>Vous cherchez une référence précise ?</h2><p>Contactez un conseiller CBK pour connaître les modèles, finitions et disponibilités.</p><a href="https://wa.me/21626877474?text=Bonjour%2C%20je%20cherche%20une%20r%C3%A9f%C3%A9rence%20de%20robinetterie.">Demander la gamme par WhatsApp</a></section>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get('style') || params.get('category');
+    if (selectedCategory) document.querySelectorAll('.card[data-category]').forEach((card) => {
+      card.hidden = card.dataset.category.toLowerCase() !== selectedCategory.toLowerCase();
+    });
+  </script>
+</body>
+</html>
