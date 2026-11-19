@@ -32,6 +32,8 @@ const publicFiles = new Set([
   'collection.html',
   'collection-aura.html',
   'cbk-logo.png',
+  'favicon.png',
+  'logo-partage.png',
   'contact.html',
   'espace-pro.html',
   'marques.html',
@@ -63,14 +65,44 @@ const mimeTypes = {
   '.ico': 'image/x-icon',
 };
 
-function renderHtml(html) {
+function escapeAttribute(value) {
+  return String(value).replace(/[&"<>]/g, (character) => ({ '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' })[character]);
+}
+
+function renderHtml(html, request) {
   let rendered = html.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i, sharedHeader.trim());
   if (/<footer\b[^>]*>[\s\S]*?<\/footer>/i.test(rendered)) {
     rendered = rendered.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/i, sharedFooter.trim());
   } else {
     rendered = rendered.replace(/<\/body>/i, `${sharedFooter.trim()}</body>`);
   }
-  rendered = rendered.replace(/<\/head>/i, '<link rel="stylesheet" href="/shared-nav.css"></head>');
+  const configuredOrigin = process.env.SITE_URL ? process.env.SITE_URL.replace(/\/+$/, '') : '';
+  const forwardedProto = String(request.headers['x-forwarded-proto'] || '').split(',')[0].trim().toLowerCase();
+  const scheme = ['http', 'https'].includes(forwardedProto) ? forwardedProto : 'https';
+  const forwardedHost = String(request.headers['x-forwarded-host'] || '').split(',')[0].trim();
+  const requestHost = forwardedHost || String(request.headers.host || 'localhost').trim();
+  const safeHost = /^[a-z0-9.-]+(?::\d{1,5})?$/i.test(requestHost) ? requestHost : 'localhost';
+  const origin = configuredOrigin || `${scheme}://${safeHost}`;
+  const currentUrl = new URL(request.url, origin).href;
+  const metadata = [
+    '<link rel="icon" type="image/png" sizes="256x256" href="/favicon.png">',
+    '<link rel="apple-touch-icon" href="/favicon.png">',
+    '<meta property="og:type" content="website">',
+    '<meta property="og:site_name" content="La Sélection CBK">',
+    '<meta property="og:title" content="La Sélection CBK — Site officiel">',
+    '<meta property="og:description" content="Carrelage, sanitaire et robinetterie. Découvrez les collections et produits sélectionnés par CBK.">',
+    `<meta property="og:url" content="${escapeAttribute(currentUrl)}">`,
+    `<meta property="og:image" content="${escapeAttribute(`${origin}/logo-partage.png`)}">`,
+    '<meta property="og:image:width" content="1200">',
+    '<meta property="og:image:height" content="630">',
+    '<meta property="og:image:alt" content="La Sélection CBK">',
+    '<meta name="twitter:card" content="summary_large_image">',
+    '<meta name="twitter:title" content="La Sélection CBK — Site officiel">',
+    '<meta name="twitter:description" content="Carrelage, sanitaire et robinetterie. Découvrez les collections et produits sélectionnés par CBK.">',
+    `<meta name="twitter:image" content="${escapeAttribute(`${origin}/logo-partage.png`)}">`,
+    '<link rel="stylesheet" href="/shared-nav.css">',
+  ].join('');
+  rendered = rendered.replace(/<\/head>/i, `${metadata}</head>`);
   return rendered.replace(/<\/body>/i, `${enhancementScript}</body>`);
 }
 
@@ -135,7 +167,7 @@ const server = http.createServer((request, response) => {
             response.writeHead(500);
             return response.end();
           }
-          response.writeHead(200, { ...headers, 'Content-Length': Buffer.byteLength(renderHtml(html)) });
+          response.writeHead(200, { ...headers, 'Content-Length': Buffer.byteLength(renderHtml(html, request)) });
           response.end();
         });
       }
@@ -149,7 +181,7 @@ const server = http.createServer((request, response) => {
           response.writeHead(500);
           return response.end('Erreur de lecture');
         }
-        const enhanced = renderHtml(html);
+        const enhanced = renderHtml(html, request);
         response.writeHead(200, headers);
         response.end(enhanced);
       });
