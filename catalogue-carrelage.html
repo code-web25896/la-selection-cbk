@@ -78,7 +78,7 @@ footer h4{color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:.16e
 </div></div>
 
 <main class="main"><div class="wrap">
-<div class="meta-row"><span id="count">12 produits</span><span>Catalogue prototype · prix non affichés</span></div>
+<div class="meta-row"><span id="count">12 produits</span><span>Catalogue en ligne · prix sur demande</span></div>
 <div class="grid" id="grid"></div>
 <div class="empty" id="empty">Aucun produit ne correspond à vos filtres.</div>
 <div class="banner"><div><h2>Vous avez trouvé votre style ?</h2><p>Réservez votre référence dans le showroom CBK de votre choix ou contactez un conseiller sur WhatsApp.</p></div><a href="index.html#showrooms">Choisir un showroom</a></div>
@@ -90,7 +90,7 @@ footer h4{color:#fff;font-size:10px;text-transform:uppercase;letter-spacing:.16e
 <div><h4>Catalogue</h4><p><a>Carrelage</a><br><a>Sanitaire</a><br><a>Robinetterie</a></p></div>
 <div><h4>Découvrir</h4><p><a>Marques</a><br><a>Inspirations</a><br><a>Projets</a></p></div>
 <div><h4>Contact</h4><p><a href="https://wa.me/21626877474" target="_blank">WhatsApp +216 26 877 474</a><br>Croisement Ariana / La Soukra, Ariana</p></div>
-</div><div class="copy">La Sélection CBK · Prototype Catalogue V1</div>
+</div><div class="copy">La Sélection CBK · Catalogue carrelage</div>
 </div></footer>
 <div class="toast" id="toast"></div>
 
@@ -126,7 +126,7 @@ function render(){
  empty.style.display=rows.length?'none':'block';
  grid.querySelectorAll('.fav').forEach(b=>b.onclick=()=>{b.textContent=b.textContent==='♡'?'♥':'♡';showToast(b.textContent==='♥'?'Ajouté aux favoris':'Retiré des favoris')})
  grid.querySelectorAll('.reserve').forEach((b,i)=>b.onclick=()=>showToast('Réservation rapide : choisissez le produit puis le showroom.'));
- grid.querySelectorAll('.view[href="#"]').forEach(b=>b.onclick=(e)=>{e.preventDefault();showToast('Fiche produit à construire dans le prototype.')})
+ grid.querySelectorAll('.view[href="#"]').forEach(b=>b.onclick=(e)=>{e.preventDefault();showToast('Cette fiche produit sera bientôt disponible.')})
 }
 [q,brand,effect,format,finish].forEach(el=>el.addEventListener('input',render));
 document.getElementById('reset').onclick=()=>{q.value='';brand.value='';effect.value='';format.value='';finish.value='';render()};
