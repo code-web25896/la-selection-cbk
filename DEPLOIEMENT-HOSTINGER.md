@@ -21,6 +21,7 @@ Le backend utilise MySQL et crée ses tables automatiquement au premier accès. 
 ```text
 DB_HOST=127.0.0.1
 DB_PORT=3306
+PORT=3000
 DB_NAME=nom_de_la_base
 DB_USER=utilisateur_mysql
 DB_PASSWORD=mot_de_passe_mysql
@@ -31,7 +32,7 @@ NODE_ENV=production
 
 Dans hPanel, créez la base et l’utilisateur sous **Websites → Manage site → Databases → Management**. Copiez le nom de base, l’utilisateur et le mot de passe complets, préfixes compris. Hostinger indique `127.0.0.1` et le port `3306` pour une application Node.js hébergée chez eux. Générez un mot de passe admin long et unique avec un gestionnaire de mots de passe.
 
-Ajoutez les vraies valeurs dans les variables d’environnement hPanel, jamais dans les fichiers du projet ou dans Git. `ADMIN_EMAIL` est l’identifiant unique de l’administrateur et `ADMIN_PASSWORD` son mot de passe. Depuis le formulaire unique de `/espace-pro.html`, saisissez ces deux valeurs : le rôle admin ouvre une session et redirige vers `/admin-cbk.html`. Les professionnels utilisent le même formulaire avec leurs identifiants pro et arrivent dans leur espace habituel. Les API admin acceptent uniquement cette session authentifiée, sans clé admin parallèle. Ne créez pas de variable `PORT` : Hostinger fournit le port d’écoute, et `server.js` le lit déjà.
+Ajoutez les vraies valeurs dans les variables d’environnement hPanel, jamais dans les fichiers du projet ou dans Git. Pour ce déploiement Hostinger, réglez `PORT=3000`, port utilisé par `server.js` lorsqu’il démarre sans variable `PORT`. `ADMIN_EMAIL` est l’identifiant unique de l’administrateur et `ADMIN_PASSWORD` son mot de passe. Depuis le formulaire unique de `/espace-pro.html`, saisissez ces deux valeurs : le rôle admin ouvre une session et redirige vers `/admin-cbk.html`. Les professionnels utilisent le même formulaire avec leurs identifiants pro et arrivent dans leur espace habituel. Les API admin acceptent uniquement cette session authentifiée, sans clé admin parallèle.
 
 Déposez les PDF destinés aux professionnels dans `documents/pro/`. L'API ne les liste et ne les transmet qu'aux comptes actifs. Aucun PDF n'est fourni dans le dossier actuel.
 
@@ -42,7 +43,7 @@ La connexion à la base Hostinger utilise `127.0.0.1` et MySQL. Consultez la [do
 1. Vérifiez que le forfait prend en charge les applications Node.js, puis ouvrez **Websites → Create site → Web App** dans Hostinger.
 2. Choisissez le domaine (ou temporaire), puis **Import your Git repository**. Connectez GitHub et sélectionnez `code-web25896/la-selection-cbk`, branche `main`.
 3. Réglez le déploiement : framework **Other**, Node.js **24.x**, racine `/`, gestionnaire **npm**, commande de build **None**. Le projet a le script `npm start` et l’entrée `server.js`; sélectionnez `server.js` si l’écran demande un fichier d’entrée. Aucun dossier de sortie n’est requis.
-4. Dans **Environment variables**, ajoutez chaque variable du bloc ci-dessus avec les valeurs réelles (ne copiez pas les valeurs d’exemple). Le port est fourni automatiquement par Hostinger.
+4. Dans **Environment variables**, ajoutez chaque variable du bloc ci-dessus avec les valeurs réelles (ne copiez pas les valeurs d’exemple). Gardez `PORT=3000`, conformément au réglage de l’application.
 5. Cliquez **Deploy**. Hostinger installe les dépendances à partir de `package-lock.json` et lance le script de démarrage. Les tables MySQL et le catalogue initial sont créés au premier accès API.
 6. Quand le tableau de bord indique que l’application est en marche, ouvrez le domaine, vérifiez l’accueil et `/espace-pro.html`, puis connectez-vous avec `ADMIN_EMAIL` et `ADMIN_PASSWORD`. Activez HTTPS/SSL depuis hPanel si nécessaire.
 
